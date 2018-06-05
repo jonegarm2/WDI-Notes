@@ -1,0 +1,48 @@
+body {
+    background-color: #cae5ff;
+    font-family: 'Roboto', sans-serif;
+    color: #6f8ab7;
+}
+
+.main {
+    margin-top: 50px;
+}
+
+.main * {
+    margin: 20px auto;
+    text-align: center;
+}
+
+td {
+    border: 1px solid #615d6c;
+    font-size: -webkit-xxx-large;
+    width: 75px;
+    height: 75px;
+}
+
+.reset {
+    display: block;
+}
+
+/*
+
+    Removing borders around box
+
+*/
+
+td:first-child {
+    border-left: none;
+}
+
+td:last-child {
+    border-right: none;
+}
+
+.row1 td {
+    border-top: none;
+}
+
+.row3 td {
+    border-bottom: none;
+}
+

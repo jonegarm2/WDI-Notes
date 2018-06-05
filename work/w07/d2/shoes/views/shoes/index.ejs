@@ -1,0 +1,25 @@
+<%- include('./../_partials/head') %>
+
+<h1>All Shoes</h1>
+
+<a href="/shoes/new">New</a>
+    <h1>Shoes</h1>
+    <% for (key in shoes) {%>
+      <hr>
+      <h3><%= shoes[key].name %></h3>
+      <h4><%= shoes[key].year %></h4>
+      <p><%= shoes[key].description %></p>
+      <a href='/shoes/<%= key %>'><button>Show</button></a>
+      <br>
+      <br>
+        <a href='/shoes/<%= key %>/edit'><button>Edit</button></a>
+      <br>
+      <br>
+      <form method="POST" action="/shoes/<%= key %>?_method=DELETE">
+        <button class="delete" type="submit">Delete</button>
+      </form>
+      <hr>
+      <br>
+    <% } %>
+
+<%- include('./../_partials/footer') %>

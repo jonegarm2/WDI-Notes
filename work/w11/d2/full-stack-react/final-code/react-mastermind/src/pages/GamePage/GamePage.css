@@ -1,0 +1,26 @@
+.GamePage {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.GamePage-game {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
+.GamePage-controls {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  margin-left: 20px;
+}
+
+.GamePage-nav {
+  width: 115px;
+}
+
+.GamePage-button {
+  margin: 10px 10px 0;
+}
+

@@ -1,0 +1,18 @@
+.App {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.App-game {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
+.App-controls {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  margin-left: 20px;
+}
+

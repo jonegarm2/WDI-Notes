@@ -1,0 +1,20 @@
+<%- include ../header.ejs %>
+
+<% if (beers.length) { %>
+  <div class="list-group">
+    <% beers.forEach(function(beer) { %>
+      <a href="/beers/<%= beer.id %>" class="list-group-item">
+        <h4 class="list-group-item-heading"><%= beer.name %></h4>
+      </a>
+    <% }) %>
+  </div>
+<% } else { %>
+  <h2 class="text-center">No Beers Yet!</h2>
+<% } %>
+
+<hr><br><br>
+<div class="text-center">
+  <a href="/beers/new" class="btn btn-lg btn-default"> ADD BEER </a>
+</div>
+
+<%- include ../footer.ejs %>

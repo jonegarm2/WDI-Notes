@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pick-A-Student</title>
+    <style>
+        html, body {
+            font-family: helvetica;
+            font-weight: lighter;
+            font-size: 20px;
+            margin: 0;
+            height: 100%;
+        }
+        #container {
+            text-align: center;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        ul li:first-child {
+            font-size: 50px;
+            color: green;
+            margin-bottom: 15px;
+        }
+        li {
+            list-style: none;
+            animation: twirl 1s;
+        }
+        @keyframes twirl {
+          0% {
+            transform-origin: center;
+            transform: rotate3d(0,0,1,-200deg);
+            opacity: 0
+          }
+          100% {
+            transform-origin: center;
+            transform: none;
+            opacity: 1
+          }
+        }
+        button {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            font-size: 20px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="pick">Next WDI<br>Contestant</button>
+    <div id="container">
+        <ul id="picked">
+            <li>Who's First?</li>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+      var students = [
+        'Mike',
+        'Jesse',
+        'Lorenzo',
+        'Jonathan',
+        'Andrew',
+        'James',
+        'Slocum',
+        'Tara',
+      ];
+
+      var pickedList = document.getElementById('picked');
+      var first = true;
+
+      document.getElementById('pick').addEventListener('click', function() {
+          var contestant = students.splice(Math.floor(Math.random() *  students.length), 1);
+          var li = document.createElement('li');
+          li.innerHTML = contestant;
+          if (first) {
+            pickedList.firstElementChild.remove();
+            pickedList.appendChild(li);
+            first = false;
+          } else {
+            pickedList.insertBefore(li, pickedList.firstElementChild);
+          }
+      });
+
+    </script>

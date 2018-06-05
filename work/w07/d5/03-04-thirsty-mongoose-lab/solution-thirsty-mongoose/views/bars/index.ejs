@@ -1,0 +1,20 @@
+<%- include ../header.ejs %>
+
+<% if (bars.length) { %>
+  <div class="list-group">
+    <% bars.forEach(function(bar) { %>
+      <a href="/bars/<%= bar.id %>" class="list-group-item">
+        <h4 class="list-group-item-heading"><%= bar.name %></h4>
+      </a>
+    <% }) %>
+  </div>
+<% } else { %>
+  <h2 class="text-center">No Bars Yet!</h2>
+<% } %>
+
+<hr><br><br>
+<div class="text-center">
+  <a href="/bars/new" class="btn btn-lg btn-default"> ADD BAR </a>
+</div>
+
+<%- include ../footer.ejs %>

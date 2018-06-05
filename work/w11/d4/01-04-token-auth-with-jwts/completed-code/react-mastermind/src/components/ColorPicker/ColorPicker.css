@@ -1,0 +1,18 @@
+.ColorPicker {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.ColorPicker-color:hover {
+  opacity: 1;
+}
+
+.ColorPicker-color {
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  border-radius: 50%;
+  opacity: 0.85;
+  cursor: pointer;
+};

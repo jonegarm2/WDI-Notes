@@ -1,0 +1,17 @@
+<%- include ../header.ejs %>
+
+<form action="/bars" method="post" class="text-center">
+  <div class="form-group">
+    <label Bar Name: </label>
+    <input type="text" name="name" class="form-control" placeholder="Bar Name">
+  </div>
+  <div class="form-group">
+    <label Location: </label>
+    <input type="text" name="location" class="form-control" placeholder="Location">
+  </div>
+  <button type="submit" class="btn btn-lg btn-default"> ADD BAR </button>
+</form>
+
+<hr>
+
+<%- include ../footer.ejs %>

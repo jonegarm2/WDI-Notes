@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bloggy Styles</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Bloggy Style</h1>
+        
+        <label for="title">New Post Title:</label>
+        <input id="title" type="text" name="title">
+    
+        <label for="content">New Post Content</label>
+        <textarea id="content" name="content" cols="30" rows="10"></textarea>
+    
+        <button class="submit-button">Submit New Post</button>
+    
+        <h3>All Posts:</h3>
+        <ul id="posts"></ul>
+    </div>
+
+    <script>
+
+        // Constants
+        const rootAPIEndpoint = 'https://limitless-inlet-95591.herokuapp.com';
+
+        // Cached element references
+        let container = document.querySelector('.container');
+        let title = document.querySelector('#title');
+        let content = document.querySelector('#content');
+        let postsDOMNode = document.querySelector('#posts');
+
+        function getPosts() {
+            fetch(`${rootAPIEndpoint}/api/posts`)
+                .then(posts => posts.json())
+                .then(jsonPosts => render(jsonPosts))
+        }
+        
+        function addAndDeletePost(e) {
+                        
+            if (e.target.className === "delete") {
+                fetch(`${rootAPIEndpoint}/api/posts/${e.target.dataset.id}`, {
+                    method: 'DELETE'
+                })
+                .then(() => getPosts());
+            }
+              
+            if (e.target.className === "submit-button") {
+                fetch(`${rootAPIEndpoint}/api/posts`, {
+                    method: 'POST', 
+                    body: JSON.stringify({ 
+                        title: title.value, 
+                        content: content.value
+                    }), 
+                    headers: {
+                        'content-type': 'application/json'
+                    }
+                })
+                .then(function() {
+                    title.value = "";
+                    content.value = "";
+                    getPosts();
+                })
+            }
+    
+        }
+        
+        // Call getPosts on page load
+        getPosts();
+
+        // Event list   eners
+        container.addEventListener('click', addAndDeletePost);
+
+        // Render method
+        // posts: JSON of all posts returned from API
+        function render(posts) {
+            let postsString = "";
+            posts.forEach(function(post) {
+                postsString += `<li><b>${post.title}</b>: ${post.content}&nbsp;|&nbsp;
+                                <button class="delete" data-id="${post._id}">Delete</button></li>`;
+            })
+            postsDOMNode.innerHTML = postsString;
+        }
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,39 @@
+Name: <%= user.name %><br>
+Age: <%= user.age %><br>
+
+<h3>Posts:</h3>
+<% user.posts.forEach(function(post) { %>
+    <%= post.content %>
+    <%= post.category %><br>
+    <form action="/users/<%= user._id %>/posts/<%= post._id %>?_method=DELETE" method="POST">
+        <input type="submit" value="Delete This Post">
+    </form>
+    <br>
+<% }) %>
+
+<hr> 
+
+<h4>Add New Post Below:</h4>
+
+<form action="/users/<%= user._id %>/posts" method="POST">
+    
+    <label for="content">Write Thy Post Hereth</label>
+    <textarea type="text" name="content" placeholder="I'm a dope post!"></textarea>
+    <br>
+    <br>
+    <label for="category">Category</label>
+    <select name="category">
+        <option value="Cats">Cats</option>
+        <option value="Dogs">Dogs</option>
+        <option value="#fitzpo">#fitzpo</option>
+    </select>
+
+    <input type="submit" value="New Post">
+
+</form>
+
+<style>
+    * {
+        font-family: 'Courier New', Courier, monospace;
+    }
+</style>

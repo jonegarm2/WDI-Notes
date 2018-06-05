@@ -1,0 +1,18 @@
+<%- include ../header.ejs %>
+
+<% if (beers.length) { %>
+  <div class="list-group">
+    <% beers.forEach(function(beer) { %>
+      <form action="/bars/<%= barId %>/beers/<%= beer.id %>" class="list-group-item" method="post">
+        <button type="submit" class="btn btn-lg btn-success">
+          <%= beer.name %>
+          <small class="text-muted"><%= beer.style %></small>
+        </button>
+      </form>
+    <% }) %>
+  </div>
+<% } else { %>
+  <h2 class="text-center">Already Serving All Beers!</h2>
+<% } %>
+
+<%- include ../footer.ejs %>

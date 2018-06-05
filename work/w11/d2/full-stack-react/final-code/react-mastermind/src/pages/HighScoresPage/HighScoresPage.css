@@ -1,0 +1,14 @@
+.HighScores {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.HighScores-cancel {
+  width: 100px;
+}
+
+.HighScores-table {
+  width: 380px;
+}

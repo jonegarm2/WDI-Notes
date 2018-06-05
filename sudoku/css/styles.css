@@ -1,0 +1,26 @@
+body {
+    margin: 0 auto;
+    text-align: center;
+}
+
+td {
+    width: 45px;
+    height: 45px;
+    border: 2px solid black;
+}
+
+tr td:nth-child(3),
+tr td:nth-child(6) {
+    border-right: 5px solid black;
+}
+
+tbody tr:nth-child(3) td,
+tbody tr:nth-child(6) td{
+    border-bottom: 5px solid black;
+}
+input {
+    width: 45px;
+    height: 45px;
+ }
+
+

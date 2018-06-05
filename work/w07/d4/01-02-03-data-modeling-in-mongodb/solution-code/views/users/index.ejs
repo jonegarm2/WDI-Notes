@@ -1,0 +1,25 @@
+<h1>All Users</h1>
+
+<center> 
+    <% users.forEach(function(user) { %>
+        <hr>
+        <h2><%= user.name %></h2>
+        <h3><%= user.age %></h3>
+        <a href="/users/<%= user._id %>">Show User</a>
+        <hr>
+    <% }) %>
+</center>
+
+<blockquote class="quote">
+    <em>I'm not a business man, I am a <b>business</b> man.</em> - Jay Z
+</blockquote>
+
+<style>
+    * {
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    .quote {
+        text-align: center;
+    }
+</style>

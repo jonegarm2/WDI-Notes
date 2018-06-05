@@ -1,0 +1,17 @@
+<%- include ../header.ejs %>
+
+<form action="/beers" method="post" class="text-center">
+  <div class="form-group">
+    <label Beer Name: </label>
+    <input type="text" name="name" class="form-control" placeholder="Beer Name">
+  </div>
+  <div class="form-group">
+    <label Location: </label>
+    <input type="text" name="style" class="form-control" placeholder="Style">
+  </div>
+  <button type="submit" class="btn btn-lg btn-default"> ADD BEER </button>
+</form>
+
+<hr>
+
+<%- include ../footer.ejs %>

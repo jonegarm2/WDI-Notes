@@ -1,0 +1,40 @@
+<h1 class="jumbotron text-center">Wacky Widgets</h1>
+
+<% if @widgets.count == 0 %>
+  <h3 class="text-center">No Widgets Exist</h3>
+<% else %>
+  <table>
+    <tr>
+      <th>Description</th><th>Quantity</th><th>Remove</th>
+    </tr>
+    <% total = 0 %>
+    <% @widgets.each do |w| %>
+      <% total += w.quantity %>
+      <tr>
+        <td><%= w.description %></td>
+        <td><%= w.quantity %></td>
+        <td><%= link_to "X", widget_path(w), method: :delete, class: 'btn btn-xs btn-danger' %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td>Total Quantity</td>
+      <td><%= total %></td>
+      <td></td>
+    </tr>
+  </table>
+<% end %>
+<hr>
+<h4>Add Widget:</h4>
+<%= form_for @widget do |f| %>
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_field :description, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :quantity %>
+    <%= f.text_field :quantity, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.submit "Add Widget", class: "btn btn-success" %>
+  </div>
+<% end %>

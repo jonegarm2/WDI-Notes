@@ -1,0 +1,5 @@
+/* 
+
+    Create post model here
+
+*/

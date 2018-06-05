@@ -1,0 +1,10 @@
+.GameTimer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 20px;
+  color: grey;
+  height: 50px;
+  margin: 20px 0;
+}

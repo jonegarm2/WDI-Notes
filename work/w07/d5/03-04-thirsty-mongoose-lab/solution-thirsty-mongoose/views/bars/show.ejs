@@ -1,0 +1,36 @@
+<%- include ../header.ejs %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h1>
+      <%= bar.name %> <small class="text-muted"><%= bar.location %></small>
+    </h1>
+  </div>
+  <div class="panel-body">
+    <% if (bar.beers.length) { %>
+      <h3>Beers Served:</h3><br>
+      <% bar.beers.forEach(beer => { %>
+        <div class="list-item">
+          <form action="/bars/<%= bar.id %>/beers/<%= beer.id %>?_method=DELETE" class="list-group-item" method="post">
+            <label><%= beer.name %></label>
+            <button type="submit" class="btn btn-sm btn-danger">
+              Stop Serving
+            </button>
+          </form>
+        </div>
+      <% }) %>
+    <% } else { %>
+      <h3>No Beers Being Served</h3>
+    <% } %>
+  </div>
+</div>
+<hr><br><br>
+<div class="text-center">
+  <a href="/bars/<%= bar.id %>/beers/new" class="btn btn-lg btn-default"> ADD BEER </a>
+  <br><br>
+  <form action="/bars/<%= bar.id %>?_method=DELETE" method="POST">
+    <button type="submit" class="btn btn-lg btn-danger"> DELETE THIS BAR </button>
+  </form>
+</div>
+
+<%- include ../footer.ejs %>

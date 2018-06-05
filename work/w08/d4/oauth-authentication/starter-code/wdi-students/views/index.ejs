@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WDI Student Fun Facts</title>
+  <!-- Google Icon Fonts used by Materialize -->
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Materialize CSS Framework -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+  <link rel="stylesheet" href="stylesheets/style.css"/>
+</head>
+<body>
+  <div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper">
+        <a href="" class="brand-logo left">WDI Student Fun Facts</a>
+      </div>
+    </nav>
+  </div>
+  <div class="row">
+    <div class="col s4">
+      <!-- search -->
+      <div class="input-field">
+        <input id="search" type="search" placeholder="search name">
+        <i class="material-icons">close</i>
+      </div>
+    </div>
+    <div class="col s8">
+      <form action="" class="input-field right">
+        <input name="sort" type="radio" id="sortCohort" class="with-gap" checked>
+        <label for="sortCohort">Sort by Cohort</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input name="sort" type="radio" id="sortName" class="with-gap">
+        <label for="sortName">Sort by Name</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </form>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- students will be rendered within the #students div -->
+    <div id="students" class="col s12"></div>
+  </div>
+
+  <!-- underscore template / note: ejs was configured to use different tags in server.js -->
+  <script type="text/template" id="studentTemplate">
+    <h2 class="blue-grey-text text-darken-2">Students</h2>
+    <% students.forEach(function(student) { %>
+      <div class="card blue-grey student">
+        <div class="card-content white-text">
+          <div>
+          <i class="small material-icons">perm_identity</i>
+          <span class="card-title"><%= student.name %></span>
+          <% if (student.cohort) { %><span class="badge white">WDI <%= student.cohort %></span><% } %>
+          </div>
+          <ul class="collection">
+            <% student.facts.forEach(function(fact) { %>
+              <li class="collection-item blue-grey-text text-darken-2"><%= fact.text %></li>
+            <% }) %>
+          </ul>
+        </div>
+      </div>
+    <% }) %>
+  </script>
+
+  <!-- jQuery (required by Materialize) -->
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <!-- Using Underscore for collection manipulation and client-side templatin -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+  <!-- JavaScript for Materialize -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+  <script src="javascripts/app.js"></script>
+</body>
+</html>

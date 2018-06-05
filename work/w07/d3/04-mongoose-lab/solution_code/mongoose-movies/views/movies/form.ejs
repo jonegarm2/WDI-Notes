@@ -1,0 +1,23 @@
+<form action="/movies<%= movie.title ? '/' + movie.id + '?_method=PUT' : '' %>" method="post">
+  <label>Title:
+    <input type="text" name="title" value="<%= movie.title ? movie.title : '' %>">
+  </label><br>
+  <label>Release Year:
+    <input type="text" name="releaseYear" value="<%= movie.releaseYear ? movie.releaseYear : '' %>">
+  </label><br>
+  <label>Rating
+    <select name="rating">
+      <option value="G" <%= movie.rating === 'G' ? 'selected' : '' %> >G</option>
+      <option value="PG" <%= movie.rating === 'PG' ? 'selected' : '' %> >PG</option>
+      <option value="PG-13" <%= movie.rating === 'PG-13' ? 'selected' : '' %> >PG-13</option>
+      <option value="R" <%= movie.rating === 'R' ? 'selected' : '' %> >R</option>
+    </select>
+  </label><br>
+  <label>Cast (separate actors with commas):
+    <input type="text" name="cast" value="<%= movie.cast ? movie.cast.join(', ') : '' %>">
+  </label><br>
+  <label>Now Showing:
+    <input type="checkbox" name="nowShowing" <%= movie.nowShowing ? 'checked' : '' %> >
+  </label><br>
+  <input type="submit" value="<%= movie.title ? 'Update' : 'Add' %> Movie">
+</form>

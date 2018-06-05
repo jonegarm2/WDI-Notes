@@ -1,0 +1,46 @@
+<%- include ../header.ejs %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h1>
+      <%= beer.name %> <small class="text-muted"><%= beer.style %></small>
+      <form action="/beers/<%= beer.id %>?_method=DELETE" method="POST" class="del-beer">
+        <button type="submit" class="btn btn-lg btn-danger">DELETE THIS BEER</button>
+      </form>
+    </h1>
+  </div>
+  <div class="panel-body">
+    <% if (beer.bars.length) { %>
+      <h3>Served at these Bars:</h3>
+      <div class="list-group">
+        <% beer.bars.forEach(bar => { %>
+            <a href="/bars/<%= bar.id %>" class="list-item">
+              <h4 class="list-group-item-heading">
+                <%= bar.name %>
+              </h4>
+            </a>
+        <% }) %>
+      </div>
+    <% } else { %>
+      <h3>Not Being Served at Any Bars Yet</h3>
+    <% } %>
+  </div>
+  <div class="panel-footer">
+    <form action="/beers/<%= beer.id %>/comments" method="post">
+      <div class="form-group">
+        <input type="text" name="content" class="form-control" placeholder="add comment...">
+      </div>
+      <input type="submit" class="btn btn-success" value="Add Comment">
+    </form>
+    <h4>Comments:</h4>
+    <% beer.comments.forEach(comment => { %>
+      <div class="row">
+        <div class="col-xs-2 text-muted"><%= comment.createdAt.toDateString() %></div>
+        <div class="col-xs-10"><%= comment.content %></div>
+      </div>
+    <% }) %>
+  </div>
+</div>
+<hr>
+
+<%- include ../footer.ejs %>
